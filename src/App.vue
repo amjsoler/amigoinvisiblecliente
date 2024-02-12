@@ -1,85 +1,59 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <router-view v-slot="{ Component }">
+    <Transition name="view-transition">
+      <component :is="Component" />
+    </Transition>
+  </router-view>
+  <system-alert />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style>
+.view-transition-enter-active {
+  animation: appear-from-right 0.2s;
+  animation-delay: .2s;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.view-transition-leave-active {
+  animation: disappear-to-left 0.2s;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+@keyframes disappear-to-left {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
+  100% {
+    transform: translateX(-200px);
+    opacity: 0;
   }
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+@keyframes appear-from-right {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
   }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 </style>
+
+<script>
+import router from '@/router/index.js'
+import SystemAlert from '@/components/SystemAlert.vue'
+
+export default {
+  name: 'App',
+  components: { SystemAlert },
+  methods: {
+    router() {
+      return router
+    }
+  },
+}
+
+</script>
+
+FooterMenu
