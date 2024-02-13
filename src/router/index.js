@@ -57,13 +57,17 @@ const router = createRouter({
       component: MyGroups,
       meta: {
         requiresAuth: true,
+        footerMenu: true
       }
     },
+    //TODO: Forbidden view
     {
       path: '/forbidden-resource',
       name: "ForbiddenResource",
       component: ForbiddenResource
     },
+
+    //TODO: Not found view
     {
       path: '/not-found-resource',
       name: "NotFoundResource",

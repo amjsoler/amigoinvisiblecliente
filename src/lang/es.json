@@ -39,5 +39,20 @@
     "sendMailBtnSubmit": "Enviar correo",
     "emailSent": "Correo enviado",
     "emailSent2": "Sigue los pasos que encontrarás en él"
+  },
+  "createGroup": {
+    "nombreLabel": "Nombre",
+    "descripcionLabel": "Descripción",
+    "precioMinimoLabel": "Precio mínimo",
+    "precioMaximoLabel": "Precio máximo",
+    "tematicaRegalosLabel": "Temática de los regalos",
+    "fechaAutoasignacionLabel": "Fecha para realizar asignaciones automáticas",
+    "fechaAutoasignacionTooltip": "Si especificas una fecha y hora, el sistema realizará las asignaciones de parejas de forma automática, incluyendo a los que hayan aceptado la invitación y excluyendo a los que no",
+    "createGroupBtn": "Crear grupo"
+
+  },
+
+  "footerMenu": {
+    "myGroupsBtn": "Mis grupos"
   }
 }

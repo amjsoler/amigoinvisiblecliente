@@ -1,42 +1,30 @@
 <template>
-     <footer class="fixed bottom-0 w-full h-12 bg-container-background flex flex-row
-     justify-center [&>p]:flex-grow border-t-2 border-input-background">
-      <p class="flex flex-col items-center justify-center">
-        <shopping-bag-icon @click="router().push({name: 'GymArticles'})" />
-        <span class="text-[10px]">
-          {{ $t("footerMenu.shopBtn") }}
-        </span>
-      </p>
-      <p class="flex flex-col items-center justify-center">
-        <calendar-time-icon />
-        <span class="text-[10px]">
-          {{ $t("footerMenu.classesBtn") }}
-        </span>
-      </p>
-      <p class="flex flex-col items-center justify-center">
-        <barbell-icon @click="router().push({name: 'UserExercises'})" />
-        <span class="text-[10px]">
-          {{ $t("footerMenu.userExercises") }}
-        </span>
-      </p>
-     </footer>
+  <footer class="fixed bottom-0 w-full h-16 flex flex-row justify-around bg-container-background
+                border-t-2 border-input-background">
+    <a href="#"
+       class="flex flex-col items-center justify-center"
+       @click.prevent="router().push({name: 'MyGroups'})">
+      <users-icon />
+      <span class="text-sm">
+        {{ $t("footerMenu.myGroupsBtn") }}
+      </span>
+    </a>
+    <p>Cuenta de usuario<!--tODO--></p>
+  </footer>
 </template>
 
 <script>
-import ShoppingBagIcon from '@/components/icons/ShoppingBagIcon.vue'
-import CalendarTimeIcon from '@/components/icons/CalendarTimeIcon.vue'
 import router from '@/router/index.js'
-import BarbellIcon from '@/components/icons/BarbellIcon.vue'
+import UsersIcon from '@/components/icons/UsersIcon.vue'
 
 export default {
-    name: "FooterMenu",
-
+  name: "FooterMenu",
+  components: { UsersIcon },
   methods: {
     router() {
       return router
     }
   },
 
-  components: { BarbellIcon, CalendarTimeIcon, ShoppingBagIcon }
 }
 </script>

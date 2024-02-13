@@ -4,6 +4,7 @@
       <component :is="Component" />
     </Transition>
   </router-view>
+  <footer-menu v-if="requiresFooterMenu"/>
   <system-alert />
 </template>
 
@@ -41,19 +42,19 @@
 </style>
 
 <script>
-import router from '@/router/index.js'
 import SystemAlert from '@/components/SystemAlert.vue'
+import FooterMenu from '@/components/FooterMenu.vue'
+import router from '@/router/index.js'
 
 export default {
   name: 'App',
-  components: { SystemAlert },
-  methods: {
-    router() {
-      return router
+  components: { FooterMenu, SystemAlert },
+
+  computed: {
+    requiresFooterMenu() {
+      return router.currentRoute.value.meta.footerMenu
     }
-  },
+  }
 }
 
 </script>
-
-FooterMenu
