@@ -28,3 +28,9 @@ export default {
 
 }
 </script>
+
+<style>
+  #routerview-cotainer {
+    padding-bottom: 100px;
+  }
+</style>

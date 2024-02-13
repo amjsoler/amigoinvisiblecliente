@@ -1,4 +1,6 @@
 import { useGeneralStore } from '@/stores/general.js'
+import { useGroupsStore } from '@/stores/groups.js'
+import { useUserStore } from '@/stores/user.js'
 
 export const getDateFromString = (datetime) => {
   const date = new Date(datetime)
@@ -80,4 +82,21 @@ export function removeIdFromProcessing(elementId) {
 
 export function chedkIfIdExistsInProcessing(elementId) {
   return useGeneralStore().processing.indexOf(elementId) !== -1
+}
+
+export function checkIfUserIsAdminOfGroup(groupId) {
+  var response = false
+
+  if(useGroupsStore().groups && useUserStore().user)
+  {
+    const filteredGroups = useGroupsStore().groups.filter(item => item.id === groupId)
+
+    if(filteredGroups.length === 1){
+      if(filteredGroups.at(0).administrador === useUserStore().user.id){
+        response = true
+      }
+    }
+  }
+
+  return response
 }

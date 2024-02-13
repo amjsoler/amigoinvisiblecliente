@@ -1,5 +1,5 @@
 <template>
-  <router-view v-slot="{ Component }">
+  <router-view v-slot="{ Component }" id="routerview-cotainer">
     <Transition name="view-transition">
       <component :is="Component" />
     </Transition>

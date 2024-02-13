@@ -4,14 +4,12 @@
       <a class="flex flex-row items-center justify-center" href="#" @click.prevent="createFormVisibility = !createFormVisibility">
         <span>{{ $t("myGroups.createGroupBtn") }}</span><span><caret-down-filled /></span>
       </a>
-      <drop-down-transition>
-        <create-group v-show="createFormVisibility" />
-      </drop-down-transition>
+      <create-group @group-created="createFormVisibility = !createFormVisibility" v-if="createFormVisibility" />
     </block-section>
 
     <block-section>
-      <ul v-if="groups.length !== 0">
-        <li @click="router.push({name: 'ShowGroup', params: {id: group.id}})"
+      <ul v-if="groups && groups.length !== 0">
+        <li @click="router().push({name: 'ShowGroup', params: {id: group.id}})"
             v-for="group in groups" v-bind:key="group.id">
           <article>
             <header>
@@ -45,11 +43,17 @@ import ViewContainer from '@/components/containers/ViewContainer.vue'
 import ChevronUpTopIcon from '@/components/icons/ChevronUpTopIcon.vue'
 import DropDown from '@/components/transitions/DropDownTransition.vue'
 import DropDownTransition from '@/components/transitions/DropDownTransition.vue'
+import router from '@/router/index.js'
 
 export default {
   name: "MyGroups",
+  methods: {
+    router() {
+      return router
+    }
+  },
 
-  components: { DropDownTransition, DropDown, ChevronUpTopIcon, ViewContainer, CaretDownFilled, CreateGroup, BlockSection },
+  components: { DropDownTransition, ChevronUpTopIcon, ViewContainer, CaretDownFilled, CreateGroup, BlockSection },
 
   data() {
     return {

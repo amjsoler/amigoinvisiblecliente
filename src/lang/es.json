@@ -67,6 +67,12 @@
     "deleteMsgConfirm": "Todos los datos del grupo (incluyendo configuración, participantes y repartos) se eliminarán ¿Estás seguro de querer borrarlo?",
     "deleteAlert": "El grupo se ha eliminado correctamente"
   },
+  "showGroup": {
+    "errorReadingGroup": "Ha ocurrido un problema al mostrar le grupo. Inténtalo de nuevo más tarde y si el problema persiste, ponte en contacto con nosotros",
+    "noPrecioMinimo": "Sin mínimo",
+    "noPrecioMaximo": "Sin máximo",
+    "noTematicaRegalos": "Cualquier temática"
+  },
 
   "footerMenu": {
     "myGroupsBtn": "Mis grupos"

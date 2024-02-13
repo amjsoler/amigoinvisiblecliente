@@ -85,9 +85,9 @@ export default {
 
   methods: {
     async createGroup() {
-      const response = useGroupsStore().actionCreateGroup(this.newGroup)
-
+      const response = await useGroupsStore().actionCreateGroup(this.newGroup)
       removeIdFromProcessing("create-group-submit")
+
       if(response) {
         this.$emit("groupCreated")
       }

@@ -12,7 +12,7 @@ export const useGroupsStore = defineStore("groups", {
     async actionGetMyGroups() {
       try {
         const response = await API.groups.getMyGroups()
-
+console.log(response)
         if(response){
           useGroupsStore().$patch({groups: response.data})
         }
@@ -39,7 +39,11 @@ export const useGroupsStore = defineStore("groups", {
     },
 
     actionGetGroup(groupId) {
-      return this.groups.filter(item => item.id === parseInt(groupId)).at(0)
+      try {
+        return this.groups.filter(item => item.id === parseInt(groupId)).at(0)
+      }catch(error){
+        return null
+      }
     },
 
     async actionDeleteGroup(groupId){
