@@ -2,7 +2,7 @@
   <div-v-align>
     <container-with-brand-head>
       <section v-if="!emailSent"
-               class="flex flex-col items-center space-y-4 pt-2">
+               class="flex flex-col items-center space-y-6 pt-2">
         <h1 class="text-lg text-center font-bold dark:text-white">
           {{ $t("accountRecovery.title") }}
         </h1>
@@ -10,7 +10,7 @@
           <b>{{ $t("accountRecovery.accountRecoverMsg") }}</b>
         </p>
 
-        <form class="w-full space-y-4">
+        <form class="w-full space-y-6">
           <form-group>
             <span-label>{{ $t("accountRecovery.emailLabel")}}</span-label>
             <variable-input input-type="email" v-model="accountRecover.correo" />

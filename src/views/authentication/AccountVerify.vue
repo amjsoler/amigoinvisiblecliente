@@ -44,7 +44,7 @@ export default {
 
   methods: {
     async resendEmail() {
-      const response = API.users.accountVerify()
+      const response = await API.users.accountVerify()
 
       removeIdFromProcessing("account-verify-submit")
 

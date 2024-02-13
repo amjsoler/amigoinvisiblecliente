@@ -1,5 +1,6 @@
 {
   "unknownError": "Se ha producido un error inesperado. Inténtalo de nuevo más tarde y si el problema persiste, ponte en contacto con nosotros",
+  "api401": "Parece que tu sesión ya no era válida, por favor, vuelve a iniciar sesión",
   "LoginUser": {
     "title": "Inicia sesión",
     "form": {

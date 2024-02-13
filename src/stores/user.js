@@ -25,7 +25,6 @@ export const useUserStore = defineStore('user', {
       try {
         const response = await API.users.loginUser(user)
 
-        //Actualizo los datos de usuario
         useUserStore().$patch({user: response.data})
 
         return true

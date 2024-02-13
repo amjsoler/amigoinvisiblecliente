@@ -1,6 +1,6 @@
 <template>
   <div-v-align>
-    <container-with-brand-head blur="true">
+    <container-with-brand-head>
       <h1 class="text-lg text-center font-bold dark:text-white mb-2">
         {{$t("LoginUser.title")}}
       </h1>
@@ -41,7 +41,6 @@
 <script>
 
 import { useUserStore } from '@/stores/user'
-import {mapWritableState} from 'pinia'
 import SpanLabel from '@/components/forms/SpanLabel.vue'
 import SmallError from '@/components/forms/SmallError.vue'
 import FormGroup from '@/components/forms/FormGroup.vue'
@@ -66,16 +65,12 @@ export default {
     }
   },
 
-  computed: {
-    ...mapWritableState(useUserStore, {
-      user:"user"
-    })
-  },
   methods: {
     async login(){
       const result = await useUserStore().actionLogin(this.loginUser)
 
       removeIdFromProcessing("login-user-submit")
+
       if(result){
         router.push({name: "MyGroups"})
       }

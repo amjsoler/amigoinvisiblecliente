@@ -6,6 +6,8 @@ import AccountRecovery from '@/views/authentication/AccountRecovery.vue'
 import RegisterUser from '@/views/authentication/RegisterUser.vue'
 import AccountVerify from '@/views/authentication/AccountVerify.vue'
 import MyGroups from '@/views/grupos/MyGroups.vue'
+import ForbiddenResource from '@/views/ForbiddenResource.vue'
+import NotFoundResource from '@/views/NotFoundResource.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -18,6 +20,14 @@ const router = createRouter({
       }
     },
     {
+      path: "/login-user",
+      name: "LoginUser",
+      component: LoginUser,
+      meta: {
+        requiresGuest: true
+      }
+    },
+    {
       path: '/register-user',
       name: 'RegisterUser',
       component: RegisterUser,
@@ -26,19 +36,11 @@ const router = createRouter({
       }
     },
     {
-      path: '/verificar-cuenta',
+      path: '/account-verify',
       name: 'AccountVerify',
       component: AccountVerify,
       meta: {
         requiresAuth: true
-      }
-    },
-    {
-      path: "/login-user",
-      name: "LoginUser",
-      component: LoginUser,
-      meta: {
-        requiresGuest: true
       }
     },
     {
@@ -54,21 +56,28 @@ const router = createRouter({
       name: 'MyGroups',
       component: MyGroups,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
       }
     },
-
-    //ForbiddenResource
-    //NotFoundResource
+    {
+      path: '/forbidden-resource',
+      name: "ForbiddenResource",
+      component: ForbiddenResource
+    },
+    {
+      path: '/not-found-resource',
+      name: "NotFoundResource",
+      component: NotFoundResource
+    }
   ]
 })
 
 router.beforeEach((to, from, next) => {
   //Vacío el store de validaciones
-  const validationStore = useValidationStore()
-  validationStore.$reset()
+  useValidationStore().$reset()
 
   var primerRequires = false;
+
   //Comprobamos si la ruta de destino precisa autenticación
   if (!primerRequires && to.matched.some((record) => record.meta.requiresAuth)) {
     console.log("router/index.js: requiresAuth detected. Checking...");

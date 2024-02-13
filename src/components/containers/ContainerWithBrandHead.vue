@@ -1,7 +1,7 @@
 <template>
   <div class="flex-grow flex flex-col items-center space-y-6 px-4">
     <logo-and-app-name-horizontal v-if="includeBrand === true" />
-    <block-section blur="true">
+    <block-section :blur="blur">
       <slot />
     </block-section>
   </div>

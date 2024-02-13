@@ -1,6 +1,6 @@
 <template>
   <div-v-align>
-    <container-with-brand-head blur="true">
+    <container-with-brand-head>
       <h1 class="text-lg text-center font-bold dark:text-white">
         {{$t("RegisterUser.title")}}
       </h1>
@@ -82,7 +82,7 @@ export default {
       removeIdFromProcessing("register-form-button")
 
       if(response){
-        useGeneralStore().showAlert(
+        useGeneralStore().actionShowAlert(
           this.$t("RegisterUser.alertOk"),
           "success"
         )

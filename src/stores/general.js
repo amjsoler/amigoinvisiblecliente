@@ -12,7 +12,7 @@ export const useGeneralStore = defineStore("general", {
   },
 
   actions: {
-    showAlert(message, type) {
+    actionShowAlert(message, type) {
       this.alert.type = type
       this.alert.message = message
     }

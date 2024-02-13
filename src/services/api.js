@@ -24,12 +24,14 @@ const instance = axios
     },
     (error) => {
       if(error.response.status === 401){
-        console.log("main.js: Response error captured: 401. Delete access token and reddirect to login");
+        console.log("main.js: Response error captured: 401. Delete access token and redirect to login");
         useUserStore().$patch({user: {access_token: null}})
 
-        router.push({name: "IniciarSesion"})
+        router.push({name: "LoginUser"})
 
-        //TODO Avisar con alert al usuario de que la sesión ha terminado
+        useGeneralStore().actionShowAlert(
+          i18n.global.t("api401", "info")
+        )
       }
 
       else if(error.response.status === 403){
@@ -57,7 +59,7 @@ const instance = axios
       else if(error.response.status === 462){
         console.log("main.js: Response error captured: 462. Contraseña no es correcta");
 
-        console.log(error.response.data)
+        useValidationStore().$reset()
         useValidationStore().message = error.response.data
         useValidationStore().errors.password = [error.response.data]
       }
@@ -68,7 +70,7 @@ const instance = axios
       }
       else {
         //Si no conozco el status del error que se devuelve, lo logueo en servidor y muestro un toast
-        useGeneralStore().$patch({alert: {type: "danger", message: i18n.global.t("unknownError")}})
+        useGeneralStore().actionShowAlert(i18n.global.t("unknownError"), "danger")
       }
 
       return Promise.reject(error)
@@ -81,6 +83,7 @@ const instance = axios
     }
 
     //TODO
+    //Meto en los headers el token de firebase si es que lo tengo
     /*if(store.state.firebaseToken){
         config.headers.firebasetoken = store.state.firebaseToken
     }*/
