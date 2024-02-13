@@ -25,14 +25,28 @@ export const useGroupsStore = defineStore("groups", {
       try {
         const response = await API.groups.createGroup(newGroup)
 
-        if(response) {
-          useGroupsStore().$patch((state) => {
-            state.groups.push(response.data)
-            state.groups.sort((a, b) => {
-              return (a.nombre < b.nombre) ? -1 : ((a.nombre > b.nombre) ? 1 : 0)
-            })
+        useGroupsStore().$patch((state) => {
+          state.groups.push(response.data)
+          state.groups.sort((a, b) => {
+            return (a.nombre < b.nombre) ? -1 : ((a.nombre > b.nombre) ? 1 : 0)
           })
-        }
+        })
+
+        return true
+      }catch(error) {
+        return false
+      }
+    },
+
+    actionGetGroup(groupId) {
+      return this.groups.filter(item => item.id === parseInt(groupId)).at(0)
+    },
+
+    async actionDeleteGroup(groupId){
+      try {
+        await API.groups.deleteGroup(groupId)
+
+        this.groups.splice(this.groups.findIndex((element) => element.id === parseInt(groupId)), 1)
       }catch(error) {
         return false
       }

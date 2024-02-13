@@ -8,7 +8,7 @@ const initSubscribers = () => {
   })
 
   useGroupsStore().$subscribe((mutation, state) => {
-    localStorage.setItem(("groups", JSON.stringify(state.groups)))
+    localStorage.setItem("groups", JSON.stringify(state.groups))
   })
 }
 export default initSubscribers

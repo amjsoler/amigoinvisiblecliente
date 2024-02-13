@@ -8,6 +8,8 @@ import AccountVerify from '@/views/authentication/AccountVerify.vue'
 import MyGroups from '@/views/grupos/MyGroups.vue'
 import ForbiddenResource from '@/views/ForbiddenResource.vue'
 import NotFoundResource from '@/views/NotFoundResource.vue'
+import ShowGroup from '@/views/grupos/ShowGroup.vue'
+import DeleteGroup from '@/views/grupos/DeleteGroup.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -60,6 +62,15 @@ const router = createRouter({
         footerMenu: true
       }
     },
+    {
+      path: '/my-groups/:id',
+      name: 'ShowGroup',
+      component: ShowGroup,
+      meta: {
+        requiresAuth: true,
+        footerMenu: true
+      }
+    },
     //TODO: Forbidden view
     {
       path: '/forbidden-resource',
@@ -72,6 +83,13 @@ const router = createRouter({
       path: '/not-found-resource',
       name: "NotFoundResource",
       component: NotFoundResource
+    },
+
+    //TODO: REMOVE
+    {
+      path: '/prueba-componente',
+      name: "PruebaComponente",
+      component: DeleteGroup
     }
   ]
 })
@@ -79,6 +97,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   //Vacío el store de validaciones
   useValidationStore().$reset()
+
 
   var primerRequires = false;
 

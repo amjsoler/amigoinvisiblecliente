@@ -40,6 +40,11 @@
     "emailSent": "Correo enviado",
     "emailSent2": "Sigue los pasos que encontrarás en él"
   },
+  "myGroups": {
+    "noGroups": "Todavía no participas en ningún grupo",
+    "noGroups2": "Espera a que te inviten o crea el tuyo propio",
+    "createGroupBtn": "Crear grupo"
+  },
   "createGroup": {
     "nombreLabel": "Nombre",
     "descripcionLabel": "Descripción",
@@ -49,7 +54,18 @@
     "fechaAutoasignacionLabel": "Fecha para realizar asignaciones automáticas",
     "fechaAutoasignacionTooltip": "Si especificas una fecha y hora, el sistema realizará las asignaciones de parejas de forma automática, incluyendo a los que hayan aceptado la invitación y excluyendo a los que no",
     "createGroupBtn": "Crear grupo"
+  },
+  "groupSettings": {
+    "deleteGroupLink": "Eliminar grupo"
+  },
 
+  "deleteGroup": {
+    "deleteBtn": "Eliminar grupo",
+    "deleteMsg": "¿Estás seguro de querer borrar el grupo?",
+    "deleteNo": "Mejor no",
+    "deleteYes": "Sí, eliminar",
+    "deleteMsgConfirm": "Todos los datos del grupo (incluyendo configuración, participantes y repartos) se eliminarán ¿Estás seguro de querer borrarlo?",
+    "deleteAlert": "El grupo se ha eliminado correctamente"
   },
 
   "footerMenu": {
