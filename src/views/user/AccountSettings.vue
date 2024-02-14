@@ -1,10 +1,9 @@
 <template>
-  Send Comment
+  Account settings
 </template>
 
 <script>
-//TODO
 export default {
-  name: "SendComment",
+  name: "AccountSettings"
 }
 </script>

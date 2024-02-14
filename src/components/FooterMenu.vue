@@ -9,17 +9,25 @@
         {{ $t("footerMenu.myGroupsBtn") }}
       </span>
     </a>
-    <p>Cuenta de usuario<!--tODO--></p>
+    <a href="#"
+       class="flex flex-col items-center justify-center"
+       @click.prevent="router().push({name: 'MyAccount'})">
+      <user-icon />
+      <span class="text-sm">
+        {{ $t("footerMenu.accountBtn") }}
+      </span>
+    </a>
   </footer>
 </template>
 
 <script>
 import router from '@/router/index.js'
 import UsersIcon from '@/components/icons/UsersIcon.vue'
+import UserIcon from '@/components/icons/UserIcon.vue'
 
 export default {
   name: "FooterMenu",
-  components: { UsersIcon },
+  components: { UserIcon, UsersIcon },
   methods: {
     router() {
       return router

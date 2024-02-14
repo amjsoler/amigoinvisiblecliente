@@ -10,6 +10,7 @@ import ForbiddenResource from '@/views/ForbiddenResource.vue'
 import NotFoundResource from '@/views/NotFoundResource.vue'
 import ShowGroup from '@/views/grupos/ShowGroup.vue'
 import DeleteGroup from '@/views/grupos/DeleteGroup.vue'
+import MyAccount from '@/views/user/MyAccount.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -66,6 +67,15 @@ const router = createRouter({
       path: '/my-groups/:id',
       name: 'ShowGroup',
       component: ShowGroup,
+      meta: {
+        requiresAuth: true,
+        footerMenu: true
+      }
+    },
+    {
+      path: '/my-account',
+      name: 'MyAccount',
+      component: MyAccount,
       meta: {
         requiresAuth: true,
         footerMenu: true

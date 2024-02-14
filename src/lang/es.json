@@ -90,9 +90,13 @@
     "inviteParticipantsBtn": "Incluir",
     "finishInvitationbtn": "Guardar y mandar invitaciones"
   },
-
+  "sendComment": {
+    "commentLabel": "¿Has encontrado algún error o tienes alguna sugerencia?",
+    "commentBtnSubmit": "Enviar comentario"
+  },
   "footerMenu": {
-    "myGroupsBtn": "Mis grupos"
+    "myGroupsBtn": "Mis grupos",
+    "accountBtn": "Mi cuenta"
   },
 
   "resendParticipantInvitation": "La invitación se ha vuelto a enviar correctamente"

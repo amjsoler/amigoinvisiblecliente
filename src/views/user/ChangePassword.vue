@@ -1,10 +1,9 @@
 <template>
-Account settings
+  cuange passowrd
 </template>
 
 <script>
 export default {
-  //TODO
-  name: "AccountSettings",
+  name: "ChangePassword"
 }
 </script>
