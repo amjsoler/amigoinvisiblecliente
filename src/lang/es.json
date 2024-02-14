@@ -93,5 +93,7 @@
 
   "footerMenu": {
     "myGroupsBtn": "Mis grupos"
-  }
+  },
+
+  "resendParticipantInvitation": "La invitación se ha vuelto a enviar correctamente"
 }

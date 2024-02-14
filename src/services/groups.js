@@ -20,10 +20,19 @@ async function massiveInvitation(groupId, newParticipants) {
   return await http.post("grupos/" + groupId + "/integrantes/creacion-masiva", newParticipants)
 }
 
+async function deleteParticipant(groupId, participantId) {
+  return await http.delete("/grupos/"+groupId+"/integrantes/" + participantId)
+}
+
+async function resendParticipantInvitation(groupId, participantId) {
+  return await http.get("/grupos/"+groupId+"/integrantes/"+participantId+"/reenviar-correo-confirmacion")
+}
 export default {
   getMyGroups,
   createGroup,
   deleteGroup,
   inviteParticipant,
-  massiveInvitation
+  massiveInvitation,
+  deleteParticipant,
+  resendParticipantInvitation
 }

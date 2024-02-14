@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
 import { API } from '@/services/index.js'
+import { useGeneralStore } from '@/stores/general.js'
+import { i18n } from '@/lang/index.js'
 
 export const useGroupsStore = defineStore("groups", {
   state: () => {
@@ -76,6 +78,28 @@ export const useGroupsStore = defineStore("groups", {
 
         this.actionGetGroup(groupId).integrantes_del_grupo = response.data.concat(this.actionGetGroup(groupId).integrantes_del_grupo)
 
+        return true
+      }catch(error) {
+        return false
+      }
+    },
+
+    async actionRemoveParticipant(groupId, participantId) {
+      try {
+        await API.groups.deleteParticipant(groupId, participantId)
+
+        const indexToRemove = this.actionGetGroup(groupId).integrantes_del_grupo.findIndex(obj => obj.id === participantId)
+        this.actionGetGroup(groupId).integrantes_del_grupo.splice(indexToRemove, 1)
+      }catch(error) {
+        return false
+      }
+    },
+
+    async actionResendParticipantInvitation(groupId, participantId) {
+      try {
+        await API.groups.resendParticipantInvitation(groupId, participantId)
+
+        useGeneralStore().actionShowAlert(i18n.global.t("resendParticipantInvitation"), "success")
         return true
       }catch(error) {
         return false
