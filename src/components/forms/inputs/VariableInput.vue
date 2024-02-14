@@ -2,6 +2,7 @@
   <input :value="modelValue"
          @input="$emit('update:modelValue', $event.target.value)"
          :type="inputType"
+         :required="required"
          :placeholder="placeholder"
          class="border rounded-lg block w-full p-2.5 dark:bg-input-background dark:border-gray-600
          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue- dark:focus:border-blue-500"
@@ -16,6 +17,9 @@ export default {
     "placeholder": {},
     "inputType": {
       required: true
+    },
+    "required": {
+      default: false
     }
   },
 

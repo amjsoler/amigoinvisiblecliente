@@ -12,7 +12,7 @@ export const useGroupsStore = defineStore("groups", {
     async actionGetMyGroups() {
       try {
         const response = await API.groups.getMyGroups()
-console.log(response)
+
         if(response){
           useGroupsStore().$patch({groups: response.data})
         }
@@ -51,6 +51,32 @@ console.log(response)
         await API.groups.deleteGroup(groupId)
 
         this.groups.splice(this.groups.findIndex((element) => element.id === parseInt(groupId)), 1)
+
+        return true
+      }catch(error) {
+        return false
+      }
+    },
+
+    async actionInviteParticipant(groupId, newParticipant) {
+      try {
+        const response = await API.groups.inviteParticipant(groupId, newParticipant)
+
+        this.actionGetGroup(groupId).integrantes_del_grupo.unshift(response.data)
+
+        return true
+      }catch(error) {
+        return false
+      }
+    },
+
+    async actionMassiveInvitation(groupId, newParticipants) {
+      try {
+        const response = await API.groups.massiveInvitation(groupId, newParticipants)
+
+        this.actionGetGroup(groupId).integrantes_del_grupo = response.data.concat(this.actionGetGroup(groupId).integrantes_del_grupo)
+
+        return true
       }catch(error) {
         return false
       }

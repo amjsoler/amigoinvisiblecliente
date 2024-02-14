@@ -69,9 +69,26 @@
   },
   "showGroup": {
     "errorReadingGroup": "Ha ocurrido un problema al mostrar le grupo. Inténtalo de nuevo más tarde y si el problema persiste, ponte en contacto con nosotros",
-    "noPrecioMinimo": "Sin mínimo",
-    "noPrecioMaximo": "Sin máximo",
-    "noTematicaRegalos": "Cualquier temática"
+    "noPrecioMinimo": "1",
+    "noPrecioMaximo": "Sin límite",
+    "noTematicaRegalos": "Cualquier temática",
+    "showDesc": "Ver descripción",
+    "inviteParticipantModalTitle": "Invitar participante",
+    "inviteMassiveParticipantsModalTitle": "Invitar participantes",
+    "groupLinkCopied": "El enlace para apuntarse al grupo se ha copiado al portapapeles"
+  },
+
+  "inviteParticipant": {
+    "nameLabel": "Nombre",
+    "emailLabel": "Correo electrónico",
+    "inviteParticipantBtn": "Invitar participante"
+  },
+
+  "massiveInvitation":{
+    "nameLabel": "Nombre",
+    "emailLabel": "Correo electrónico",
+    "inviteParticipantsBtn": "Incluir",
+    "finishInvitationbtn": "Guardar y mandar invitaciones"
   },
 
   "footerMenu": {
