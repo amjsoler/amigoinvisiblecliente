@@ -33,7 +33,7 @@
           <label for="autoasignacion-input">
             <span-label>{{ $t("createGroup.fechaAutoasignacionLabel")}}</span-label>
           </label>
-          <info-circle class="z-10 w-6 h-6" @click.stop.self="console.log('holi')" data-tooltip-target="tooltip-click" data-tooltip-trigger="click" />
+          <info-circle class="z-10 w-6 h-6" data-tooltip-target="tooltip-click" data-tooltip-trigger="click" />
           <div id="tooltip-click" role="tooltip" class="absolute z-20 invisible inline-block px-4
           py-2 text-sm font-medium text-white rounded-lg shadow-sm opacity-0
           tooltip dark:bg-input-background">

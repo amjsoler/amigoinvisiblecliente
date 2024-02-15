@@ -27,6 +27,11 @@ async function deleteParticipant(groupId, participantId) {
 async function resendParticipantInvitation(groupId, participantId) {
   return await http.get("/grupos/"+groupId+"/integrantes/"+participantId+"/reenviar-correo-confirmacion")
 }
+
+async function modifyGroup(groupId, groupPayload) {
+  return await http.post("grupos/" + groupId, groupPayload)
+}
+
 export default {
   getMyGroups,
   createGroup,
@@ -34,5 +39,6 @@ export default {
   inviteParticipant,
   massiveInvitation,
   deleteParticipant,
-  resendParticipantInvitation
+  resendParticipantInvitation,
+  modifyGroup
 }

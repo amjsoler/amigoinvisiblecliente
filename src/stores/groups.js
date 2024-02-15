@@ -104,6 +104,22 @@ export const useGroupsStore = defineStore("groups", {
       }catch(error) {
         return false
       }
+    },
+
+    async actionModifyGroup(groupId, groupPayload) {
+      try {
+        const response = await API.groups.modifyGroup(groupId, groupPayload)
+        const index = this.groups.findIndex((element) => element.id === groupId)
+        useGroupsStore().$patch((state) => {
+          Object.keys(response.data).forEach(item => {
+            state.groups[index][item] = response.data[item]
+          })
+        })
+
+        return true
+      }catch(error) {
+        return false
+      }
     }
   }
 })

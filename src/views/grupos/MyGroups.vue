@@ -18,7 +18,7 @@
             <body>
 
             </body>
-            <footer>
+            <footer v-if="group && group.integrantes_del_grupo && group.integrantes_del_grupo.length">
               {{ group.integrantes_del_grupo.length }}
             </footer>
           </article>
@@ -41,7 +41,6 @@ import CreateGroup from '@/views/grupos/CreateGroup.vue'
 import CaretDownFilled from '@/components/icons/CaretDownFilled.vue'
 import ViewContainer from '@/components/containers/ViewContainer.vue'
 import ChevronUpTopIcon from '@/components/icons/ChevronUpTopIcon.vue'
-import DropDown from '@/components/transitions/DropDownTransition.vue'
 import DropDownTransition from '@/components/transitions/DropDownTransition.vue'
 import router from '@/router/index.js'
 

@@ -6,13 +6,18 @@
        items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="relative bg-white rounded-lg shadow dark:bg-container-background">
-          <button type="button"
-                  class="closebtn absolute top-3 end-2.5 text-gray-400 bg-transparent rounded-lg
+          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+            <h3 v-if="modalTitle" class="text-xl font-semibold text-gray-900 dark:text-white">
+              {{ modalTitle }}
+            </h3>
+            <button type="button"
+                    class="closebtn absolute top-3 end-2.5 text-gray-400 bg-transparent rounded-lg
                 text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                  :data-modal-hide="modalId"
-          >
-            <close-icon />
-          </button>
+                    :data-modal-hide="modalId"
+            >
+              <close-icon />
+            </button>
+          </div>
           <slot />
           <div class="flex flex-row justify-center items-center">
             <button v-if="btnYes" @click.prevent.self="$emit('btnYesClicked')"
@@ -52,7 +57,8 @@ export default {
     },
     btnYes: String,
     btnNo: String,
-    BtnOk: String
+    BtnOk: String,
+    modalTitle: String
   },
 
   emits: ["btnYesClicked","btnNoClicked","btnOkClicked"]

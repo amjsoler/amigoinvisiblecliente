@@ -123,6 +123,15 @@
     "sendCommentTitle": "Enviar comentario",
     "deleteAccountTitle": "Eliminar cuenta"
   },
+  "modifyGroup": {
+    "nombreLabel": "Nombre",
+    "descripcionLabel": "Descripción",
+    "precioMinimoLabel": "Precio mínimo",
+    "precioMaximoLabel": "Precio máximo",
+    "tematicaRegalosLabel": "Temática regalos",
+    "fechaAutoasignacionLabel": "Fecha de autoasignación",
+    "modifyGroupBtn": "Modificar grupo"
+  },
   "footerMenu": {
     "myGroupsBtn": "Mis grupos",
     "accountBtn": "Mi cuenta"

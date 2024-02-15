@@ -35,76 +35,8 @@
     </block-section>
 
     <div class="flex flex-row space-x-4">
-      <user-plus id="invite-participant-button"
-                 data-modal-target="invite-participant-modal"
-                 data-modal-toggle="invite-participant-modal"
-                 v-if="checkIfUserIsAdminOfGroup(viewingGroup.id)"
-                 class="size-10" />
-
-      <teleport to="body">
-        <div id="invite-participant-modal" tabindex="-1" aria-hidden="true"
-             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center
-           items-center w-full md:inset-0 h-dvh  bg-opacity-5 bg-input-background max-h-full"
-        >
-          <div class="relative p-4 w-full max-w-md max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <!-- Modal header -->
-              <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ $t("showGroup.inviteParticipantModalTitle")}}
-                </h3>
-                <button id="invite-participant-close-button" type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200
-              hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center
-              dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-hide="invite-participant-modal">
-                  <close-icon />
-                </button>
-              </div>
-              <!-- Modal body -->
-              <div class="p-4 md:p-5">
-                <invite-participant @participant-invited="closeInviteParticipantModal" :group-id="viewingGroup.id" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </teleport>
-
-      <users-plus id="massive-invite-participants-button"
-                  data-modal-target="massive-invite-participants-modal"
-                  data-modal-toggle="massive-invite-participants-modal"
-                  v-if="checkIfUserIsAdminOfGroup(viewingGroup.id)"
-                  class="size-10" />
-
-      <teleport to="body">
-        <div id="massive-invite-participants-modal" tabindex="-1" aria-hidden="true"
-             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center
-           items-center w-full md:inset-0 h-dvh  bg-opacity-5 bg-input-background max-h-full"
-        >
-          <div class="relative p-4 w-full max-w-md max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <!-- Modal header -->
-              <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ $t("showGroup.inviteMassiveParticipantsModalTitle")}}
-                </h3>
-                <button id="massive-invite-participants-close-button" type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200
-              hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center
-              dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-hide="massive-invite-participants-modal">
-                  <close-icon />
-                </button>
-              </div>
-              <!-- Modal body -->
-              <div class="p-4 md:p-5">
-                <massive-invitation @massive-invitation-done="closeMassiveInviteModal"  :group-id="viewingGroup.id"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </teleport>
-
+      <add-participant :viewing-group-id="viewingGroup.id" />
+      <massive-invite :viewing-group-id="viewingGroup.id" />
       <link-icon @click="copyGroupLink" class="size-10"/>
     </div>
     <block-section>
@@ -126,16 +58,16 @@ import { useUserStore } from '@/stores/user.js'
 import { checkIfUserIsAdminOfGroup } from '@/helpers/Helpers.js'
 import { useGeneralStore } from '@/stores/general.js'
 import CaretDownFilled from '@/components/icons/CaretDownFilled.vue'
-import UserPlus from '@/components/icons/UserPlus.vue'
-import InviteParticipant from '@/components/participants/InviteParticipant.vue'
 import CloseIcon from '@/components/icons/CloseIcon.vue'
 import UsersPlus from '@/components/icons/UsersPlus.vue'
 import MassiveInvitation from '@/components/participants/MassiveInvitation.vue'
 import LinkIcon from '@/components/icons/LinkIcon.vue'
+import AddParticipant from '@/components/groups/AddParticipant.vue'
+import MassiveInvite from '@/components/groups/MassiveInvite.vue'
 
 export default {
   name: "ShowGroup",
-  components: { LinkIcon, MassiveInvitation, UsersPlus, CloseIcon, InviteParticipant, UserPlus, CaretDownFilled, ViewContainer, GroupSettings, ParticipantListSimplified, GiftIcon, PigMoney, BlockSection },
+  components: { MassiveInvite, AddParticipant, LinkIcon, MassiveInvitation, UsersPlus, CloseIcon, CaretDownFilled, ViewContainer, GroupSettings, ParticipantListSimplified, GiftIcon, PigMoney, BlockSection },
 
   data() {
     return {
@@ -144,7 +76,7 @@ export default {
     }
   },
 
-  mounted() {
+  beforeMount() {
     const response = useGroupsStore().actionGetGroup(router.currentRoute.value.params.id)
 
     if(response === null){
@@ -159,7 +91,7 @@ export default {
 
   provide() {
     return {
-      groupId: this.viewingGroup.id
+      groupId: router.currentRoute.value.params.id
     }
   },
 
@@ -169,10 +101,6 @@ export default {
     router() {
       return router
     }, useGroupsStore,
-    closeInviteParticipantModal(){
-      //Esto de abajo no se puede hacer programaticamente ya que flowbite tiene un bug y deja el modal-backdrop sin ocultar
-      document.querySelector("#invite-participant-close-button").click()
-    },
 
     closeMassiveInviteModal() {
       document.querySelector("#massive-invite-participants-close-button").click()
