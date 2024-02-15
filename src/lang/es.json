@@ -95,6 +95,34 @@
     "commentBtnSubmit": "Enviar comentario",
     "alertSendCommentSuccess": "¡Gracias! Te responderemos lo antes posible"
   },
+  "changePassword": {
+    "actualPasswordLabel": "Contraseña actual",
+    "newPasswordLabel": "Nueva contraseña",
+    "newPasswordConfirmationLabel": "Repite la nueva contraseña",
+    "btnSubmit": "Cambiar contraseña",
+    "alertSuccess": "Contraseña cambiada correctamente"
+  },
+  "changeAccountSettings": {
+    "nameLabel": "Nombre",
+    "alertasPorCorreoLabel": "Alertas por correo",
+    "alertasPorNotificacionLabel": "Alertas por notificación",
+    "btnSubmit": "Guardar cambios",
+    "alertSuccess": "Ajustes guardados correctamente"
+  },
+  "accountDelete": {
+    "btnSubmit": "Eliminar mi cuenta",
+    "alertSuccess": "Tu cuenta se ha eliminado correctamente",
+    "modalMsg1": "¡Cuidado! Si eliminas tu cuenta, perderás todos tus datos de usuario y grupos. Además, si hay algún grupo activo, no se celebrarán los repartos y sus integrantes dejarán de formar parte del mismo",
+    "modalMsg2": "¿Estás seguro de querer seguir adelante con la eliminación de tu cuenta de usuario?",
+    "modalBtnNo": "Mejor no",
+    "modalBtnYes": "Sí, seguir adelante"
+  },
+  "myAccount": {
+    "accountSettings": "Ajustes de cuenta",
+    "changePasswordTitle": "Cambiar contraseña",
+    "sendCommentTitle": "Enviar comentario",
+    "deleteAccountTitle": "Eliminar cuenta"
+  },
   "footerMenu": {
     "myGroupsBtn": "Mis grupos",
     "accountBtn": "Mi cuenta"

@@ -20,10 +20,25 @@ async function sendComment(comment) {
   return await http.post("enviar-sugerencia", comment)
 }
 
+async function deleteAccount() {
+  return await http.get("eliminar-cuenta")
+}
+
+async function changePassword(changePasswordPayload) {
+  return await http.post("cambiar-contrasena", changePasswordPayload)
+}
+
+async function changeAccountSettings(changeAccountSettingsPayload) {
+    return await http.post("ajustes-cuenta", changeAccountSettingsPayload)
+}
+
 export default {
   registerUser,
   accountVerify,
   loginUser,
   accountRecover,
-  sendComment
+  sendComment,
+  deleteAccount,
+  changePassword,
+  changeAccountSettings
 }

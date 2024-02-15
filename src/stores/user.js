@@ -61,6 +61,37 @@ export const useUserStore = defineStore('user', {
       }catch(error){
         return false
       }
+    },
+
+    async actionDeleteAccount() {
+      try {
+        await API.users.deleteAccount()
+        useUserStore().user = {}
+        return true
+      }catch(error) {
+        return false
+      }
+    },
+
+    async actionChangePassword(changePasswordPayload) {
+      try {
+        await API.users.changePassword(changePasswordPayload)
+
+        return true
+      }catch(error) {
+        return false
+      }
+    },
+
+    async actionChangeAccountSettings(changeAccountSettingsPayload) {
+      try {
+        const response = await API.users.changeAccountSettings(changeAccountSettingsPayload)
+        useUserStore().$patch({user: response.data})
+
+        return true
+      }catch(error) {
+        return false
+      }
     }
   }
 })
