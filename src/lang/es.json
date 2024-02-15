@@ -92,7 +92,8 @@
   },
   "sendComment": {
     "commentLabel": "¿Has encontrado algún error o tienes alguna sugerencia?",
-    "commentBtnSubmit": "Enviar comentario"
+    "commentBtnSubmit": "Enviar comentario",
+    "alertSendCommentSuccess": "¡Gracias! Te responderemos lo antes posible"
   },
   "footerMenu": {
     "myGroupsBtn": "Mis grupos",

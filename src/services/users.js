@@ -16,9 +16,14 @@ async function accountRecover(account) {
   return await http.post("recuperar-cuenta", account)
 }
 
+async function sendComment(comment) {
+  return await http.post("enviar-sugerencia", comment)
+}
+
 export default {
   registerUser,
   accountVerify,
   loginUser,
-  accountRecover
+  accountRecover,
+  sendComment
 }

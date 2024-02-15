@@ -52,5 +52,15 @@ export const useUserStore = defineStore('user', {
         return false
       }
     },
+
+    async actionSendComment(comment) {
+      try {
+        await API.users.sendComment(comment)
+
+        return true
+      }catch(error){
+        return false
+      }
+    }
   }
 })
