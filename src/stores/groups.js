@@ -26,7 +26,7 @@ export const useGroupsStore = defineStore("groups", {
     async actionCreateGroup(newGroup) {
       try {
         const response = await API.groups.createGroup(newGroup)
-
+console.log(response)
         useGroupsStore().$patch((state) => {
           state.groups.push(response.data)
           state.groups.sort((a, b) => {
@@ -111,8 +111,10 @@ export const useGroupsStore = defineStore("groups", {
         const response = await API.groups.modifyGroup(groupId, groupPayload)
         const index = this.groups.findIndex((element) => element.id === groupId)
         useGroupsStore().$patch((state) => {
-          Object.keys(response.data).forEach(item => {
-            state.groups[index][item] = response.data[item]
+          //recorro las propiedades del objeto que tengo en la respuesta
+          Object.keys(response.data).forEach((key) => {
+            //modifico la propiedad del grupo que se encuentra en el index de más arriba
+            state.groups.at(index)[key] = response.data[key]
           })
         })
 

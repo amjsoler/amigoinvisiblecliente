@@ -59,7 +59,6 @@ import InfoCircle from '@/components/icons/InfoCircle.vue'
 import { useGroupsStore } from '@/stores/groups.js'
 import { useGeneralStore } from '@/stores/general.js'
 import router from '@/router/index.js'
-import { Modal } from 'flowbite'
 
 export default {
   name: "DeleteGroup",

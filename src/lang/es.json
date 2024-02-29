@@ -130,7 +130,8 @@
     "precioMaximoLabel": "Precio máximo",
     "tematicaRegalosLabel": "Temática regalos",
     "fechaAutoasignacionLabel": "Fecha de autoasignación",
-    "modifyGroupBtn": "Modificar grupo"
+    "modifyGroupBtn": "Modificar grupo",
+    "modifyAlert": "Grupo modificado correctamente"
   },
   "footerMenu": {
     "myGroupsBtn": "Mis grupos",
