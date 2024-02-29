@@ -34,13 +34,13 @@
       </div>
     </block-section>
 
-    <div class="flex flex-row space-x-4">
+    <div v-if="isAdmin" class="flex flex-row space-x-4">
       <add-participant :viewing-group-id="viewingGroup.id" />
       <massive-invite :viewing-group-id="viewingGroup.id" />
       <link-icon @click="copyGroupLink" class="size-10"/>
     </div>
     <block-section>
-      <participant-list-simplified :participants-list="viewingGroup.integrantes_del_grupo" />
+      <participant-list-simplified :group-admin="viewingGroup.administrador" :participants-list="viewingGroup.integrantes_del_grupo" />
     </block-section>
   </view-container>
 </template>
@@ -58,21 +58,24 @@ import { useUserStore } from '@/stores/user.js'
 import { checkIfUserIsAdminOfGroup } from '@/helpers/Helpers.js'
 import { useGeneralStore } from '@/stores/general.js'
 import CaretDownFilled from '@/components/icons/CaretDownFilled.vue'
-import CloseIcon from '@/components/icons/CloseIcon.vue'
-import UsersPlus from '@/components/icons/UsersPlus.vue'
-import MassiveInvitation from '@/components/participants/MassiveInvitation.vue'
 import LinkIcon from '@/components/icons/LinkIcon.vue'
 import AddParticipant from '@/components/groups/AddParticipant.vue'
 import MassiveInvite from '@/components/groups/MassiveInvite.vue'
 
 export default {
   name: "ShowGroup",
-  components: { MassiveInvite, AddParticipant, LinkIcon, MassiveInvitation, UsersPlus, CloseIcon, CaretDownFilled, ViewContainer, GroupSettings, ParticipantListSimplified, GiftIcon, PigMoney, BlockSection },
+  components: { MassiveInvite, AddParticipant, LinkIcon, CaretDownFilled, ViewContainer, GroupSettings, ParticipantListSimplified, GiftIcon, PigMoney, BlockSection },
 
   data() {
     return {
       viewingGroup: "",
       descVisible: false
+    }
+  },
+
+  computed: {
+    isAdmin() {
+      return this.viewingGroup.administrador === useUserStore().user.id
     }
   },
 

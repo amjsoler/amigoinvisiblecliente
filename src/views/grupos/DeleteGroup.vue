@@ -2,7 +2,7 @@
   <a href="#"
      data-modal-target="delete-group-modal"
      data-modal-toggle="delete-group-modal"
-     class="flex flex-row items-center space-x-1 text-red-300"
+     class="flex flex-row items-center justify-center px-4 py-2 space-x-1 text-red-300"
   >
     <trash-x-icon />
     <span>{{ $t("deleteGroup.deleteBtn")}}</span>
@@ -16,7 +16,7 @@
       <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="relative bg-white rounded-lg shadow dark:bg-container-background">
           <button type="button"
-                  class="absolute top-3 end-2.5 text-gray-400 bg-transparent rounded-lg
+                  class="close-btn absolute top-3 end-2.5 text-gray-400 bg-transparent rounded-lg
                 text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                   data-modal-hide="delete-group-modal"
           >
@@ -67,6 +67,8 @@ export default {
 
   inject: ["groupId"],
 
+  emits: ["groupDeleted"],
+
   data() {
     return {
       reConfirm: false
@@ -80,8 +82,9 @@ export default {
       if(response) {
         useGeneralStore().actionShowAlert(this.$t("deleteGroup.deleteAlert"), "success")
 
-        const modal = new Modal(document.getElementById("delete-group-modal"))
-          modal.hide()
+        document.querySelector("#delete-group-modal .close-btn").click()
+
+        this.$emit("groupDeleted")
 
         router.push({name: "MyGroups"})
       }

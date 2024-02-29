@@ -12,6 +12,9 @@
           <delete-group />
         </a>
       </li>
+      <li>
+        <delete-group @group-deleted="closeDropdown" />
+      </li>
     </ul>
   </div>
 </template>
