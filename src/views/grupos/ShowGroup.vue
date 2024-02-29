@@ -34,13 +34,22 @@
       </div>
     </block-section>
 
-    <div v-if="isAdmin" class="flex flex-row space-x-4">
+    <block-section v-if="viewingGroup.integrantes_asignados" class="space-y-4">
+      <div class="flex flex-col items-center justify-center">
+        <p class="text-lg text-gray-300">Tu amigo invisible es</p>
+        <p class="text-3xl font-bold ">Jorge</p>
+      </div>
+      <p class="text-red-300 text-center text-xs">(Ten en cuenta que puedes reutilizar el grupo para el proximo evento. Simplemente reinicialo desde los ajustes. Los integrantes se conservarán)</p>
+    </block-section>
+    <div v-if="checkIfUserIsAdminOfGroup(viewingGroup.id) && !viewingGroup.integrantes_asignados" class="flex flex-row space-x-4">
       <add-participant />
       <massive-invite />
       <link-icon @click="copyGroupLink" class="size-10"/>
+      <span class="flex-grow"></span>
+      <CelebrateAssignments />
     </div>
-    <block-section>
-      <participant-list-simplified :group-admin="viewingGroup.administrador" :participants-list="viewingGroup.integrantes_del_grupo" />
+    <block-section v-if="checkIfUserIsAdminOfGroup(viewingGroup.id) || !viewingGroup.integrantes_asignados">
+      <participant-list-simplified />
     </block-section>
   </view-container>
 </template>
@@ -61,21 +70,16 @@ import CaretDownFilled from '@/components/icons/CaretDownFilled.vue'
 import LinkIcon from '@/components/icons/LinkIcon.vue'
 import AddParticipant from '@/components/groups/AddParticipant.vue'
 import MassiveInvite from '@/components/groups/MassiveInvite.vue'
+import CelebrateAssignments from '@/components/groups/CelebrateAssignments.vue'
 
 export default {
   name: "ShowGroup",
-  components: { MassiveInvite, AddParticipant, LinkIcon, CaretDownFilled, ViewContainer, GroupSettings, ParticipantListSimplified, GiftIcon, PigMoney, BlockSection },
+  components: { CelebrateAssignments, MassiveInvite, AddParticipant, LinkIcon, CaretDownFilled, ViewContainer, GroupSettings, ParticipantListSimplified, GiftIcon, PigMoney, BlockSection },
 
   data() {
     return {
       viewingGroup: "",
       descVisible: false
-    }
-  },
-
-  computed: {
-    isAdmin() {
-      return this.viewingGroup.administrador === useUserStore().user.id
     }
   },
 

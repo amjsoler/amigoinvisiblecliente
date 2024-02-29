@@ -32,6 +32,10 @@ async function modifyGroup(groupId, groupPayload) {
   return await http.post("grupos/" + groupId, groupPayload)
 }
 
+async function celebrateAssignments(groupId) {
+  return await http.get(`/grupos/${groupId}/integrantes/celebrar-asignacion`)
+}
+
 export default {
   getMyGroups,
   createGroup,
@@ -40,5 +44,6 @@ export default {
   massiveInvitation,
   deleteParticipant,
   resendParticipantInvitation,
-  modifyGroup
+  modifyGroup,
+  celebrateAssignments
 }

@@ -9,7 +9,7 @@
       <li v-for="participant in participantsList" v-bind:key="participant.id">
         <div class="flex flex-row">
           <p class="flex-grow">{{participant.nombre}} ({{ participant.correo}})</p>
-          <div v-if="isAdmin" class="flex flex-row space-x-3">
+          <div v-if="checkIfUserIsAdminOfGroup(groupId)" class="flex flex-row space-x-3">
             <mail-forward v-if="!participant.confirmado" class="text-primary-300" @click="resendParticipantInvitation(participant)" />
             <trash-x-icon class="text-red-300" @click="removeParticipant(participant)"/>
           </div>
@@ -24,29 +24,21 @@ import LogoIconParticipant from '@/components/participants/LogoIconParticipant.v
 import TrashXIcon from '@/components/icons/TrashXIcon.vue'
 import MailForward from '@/components/icons/MailForward.vue'
 import { useGroupsStore } from '@/stores/groups.js'
-import { useUserStore } from '@/stores/user.js'
+import { checkIfUserIsAdminOfGroup } from '@/helpers/Helpers.js'
 
 export default {
   name: "ParticipantListSimplified",
   components: { MailForward, TrashXIcon, LogoIconParticipant },
 
-  props: {
-    participantsList: {
-      required: true
-    },
-
-    groupAdmin: {
-      required: true
-    }
-  },
+  inject: ["groupId"],
 
   computed: {
-    isAdmin() {
-      return this.groupAdmin === useUserStore().user.id
+    participantsList() {
+      return useGroupsStore().actionGetGroup(this.groupId).integrantes_del_grupo
     }
   },
-
   methods: {
+    checkIfUserIsAdminOfGroup,
     removeParticipant(participant) {
       useGroupsStore().actionRemoveParticipant(participant.grupo, participant.id)
     },

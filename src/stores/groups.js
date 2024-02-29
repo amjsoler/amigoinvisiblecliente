@@ -122,6 +122,20 @@ console.log(response)
       }catch(error) {
         return false
       }
+    },
+
+    async actionCelebrateAssignments(groupId) {
+      try {
+        await API.groups.celebrateAssignments(groupId)
+
+        useGroupsStore().$patch((state) => {
+          state.groups.at(state.groups.findIndex((element) => element.id === groupId)).integrantes_asignados = true
+        })
+
+        return true
+      } catch(error) {
+        return false
+      }
     }
   }
 })

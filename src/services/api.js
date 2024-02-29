@@ -4,6 +4,7 @@ import { useValidationStore } from '@/stores/validation.js'
 import { useUserStore } from '@/stores/user.js'
 import { useGeneralStore } from '@/stores/general.js'
 import { i18n } from '@/lang/index.js'
+import { closeEveryModal } from '@/helpers/Helpers.js'
 
 const instance = axios
   .create({
@@ -71,6 +72,9 @@ const instance = axios
       else {
         //Si no conozco el status del error que se devuelve, lo logueo en servidor y muestro un toast
         useGeneralStore().actionShowAlert(i18n.global.t("unknownError"), "danger")
+
+        //Aquí cierro los psibles modales que hayan quedado abiertos
+        closeEveryModal()
       }
 
       return Promise.reject(error)

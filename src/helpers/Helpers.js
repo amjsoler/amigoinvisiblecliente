@@ -105,3 +105,9 @@ export function closeModalGivenId(id) {
   console.log(id)
   document.querySelector('#'+id+' .closebtn').click()
 }
+
+export function closeEveryModal() {
+  document.querySelectorAll('.modal .closebtn').forEach(element => {
+    element.click()
+  })
+}

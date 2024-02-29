@@ -135,6 +135,16 @@
     "modifyGroupBtn": "Modificar grupo",
     "modifyAlert": "Grupo modificado correctamente"
   },
+  "celebrateAssignments": {
+    "button": "Realizar asignaciones",
+    "alertSuccess": "Asignaciones realizadas correctamente",
+    "modalTitle": "Realizar asignaciones",
+    "modalBody1": "¿Estás seguro de querer realizar las asignaciones?",
+    "modalBody2": "Los participantes que no hayan confirmado la invitación, se eliminarán del reparto. Además, tu grupo quedará bloqueado a menos que lo reinicies. Esto incluye, invitar nuevos miembros, eliminar miembros o realizar nuevas asignaciones",
+    "modalBody3": "¿Quieres continuar?",
+    "modalYes": "Sí, realizar asignaciones",
+    "modalNo": "Todavía no"
+  },
   "footerMenu": {
     "myGroupsBtn": "Mis grupos",
     "accountBtn": "Mi cuenta"
