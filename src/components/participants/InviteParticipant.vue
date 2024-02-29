@@ -32,13 +32,9 @@ export default {
 
   components: { ButtonSubmit, SmallError, VariableInput, SpanLabel, FormGroup },
 
-  props: {
-    groupId: {
-      required: true
-    }
-  },
-
   emits: ["participantInvited"],
+
+  inject: ["groupId"],
 
   data() {
     return {
@@ -54,8 +50,8 @@ export default {
       }
     },
 
-    inviteParticipant() {
-      const response  = useGroupsStore().actionInviteParticipant(this.groupId, this.newParticipant)
+    async inviteParticipant() {
+      const response  = await useGroupsStore().actionInviteParticipant(this.groupId, this.newParticipant)
 
       removeIdFromProcessing("invite-participant-submit")
       if(response){

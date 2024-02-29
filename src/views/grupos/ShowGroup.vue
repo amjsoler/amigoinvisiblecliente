@@ -35,7 +35,7 @@
     </block-section>
 
     <div v-if="isAdmin" class="flex flex-row space-x-4">
-      <add-participant :viewing-group-id="viewingGroup.id" />
+      <add-participant />
       <massive-invite :viewing-group-id="viewingGroup.id" />
       <link-icon @click="copyGroupLink" class="size-10"/>
     </div>

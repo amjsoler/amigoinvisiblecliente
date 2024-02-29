@@ -100,3 +100,8 @@ export function checkIfUserIsAdminOfGroup(groupId) {
 
   return response
 }
+
+export function closeModalGivenId(id) {
+  console.log(id)
+  document.querySelector('#'+id+' .closebtn').click()
+}
