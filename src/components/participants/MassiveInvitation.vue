@@ -3,7 +3,7 @@
     <form class="space-y-6">
       <form-group>
         <span-label>{{ $t("massiveInvitation.nameLabel")}}</span-label>
-        <variable-input required="true" v-model="newParticipant.nombre" input-type="text" />
+        <variable-input id="nameInput" required="true" v-model="newParticipant.nombre" input-type="text" />
       </form-group>
       <form-group>
         <span-label>{{ $t("massiveInvitation.emailLabel")}}</span-label>
@@ -70,6 +70,8 @@ export default {
     addParticipant() {
       this.integrantes.push(this.newParticipant)
       this.newParticipant = this.initNewParticipant()
+
+      document.getElementById("nameInput").focus()
     },
 
     async finishAndSendInvitations() {
