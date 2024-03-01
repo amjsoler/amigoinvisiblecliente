@@ -6,6 +6,9 @@
   >
     <ul class="py-2 text-sm dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
       <li>
+        <reset-group @group-reseted="closeDropdown" />
+      </li>
+      <li>
         <modify-group @group-modified="closeDropdown"/>
       </li>
       <li>
@@ -20,10 +23,11 @@ import SettingsIcon from '@/components/icons/SettingsIcon.vue'
 import DeleteGroup from '@/views/grupos/DeleteGroup.vue'
 import { Dropdown } from 'flowbite'
 import ModifyGroup from '@/views/grupos/ModifyGroup.vue'
+import ResetGroup from '@/views/grupos/ResetGroup.vue'
 
 export default {
   name: "GroupSettings",
-  components: { ModifyGroup, DeleteGroup, SettingsIcon },
+  components: { ResetGroup, ModifyGroup, DeleteGroup, SettingsIcon },
   methods: {
     closeDropdown(){
       const dropdown = new Dropdown(document.getElementById("group-settings-dropdown"),

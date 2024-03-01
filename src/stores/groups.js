@@ -136,6 +136,25 @@ console.log(response)
       } catch(error) {
         return false
       }
+    },
+
+    async actionResetGroup(groupId, reiniciar_participantes) {
+      try {
+        const response = await API.groups.resetGroup(groupId, reiniciar_participantes)
+
+        const index = this.groups.findIndex((element) => element.id === groupId)
+        useGroupsStore().$patch((state) => {
+          //recorro las propiedades del objeto que tengo en la respuesta
+          Object.keys(response.data).forEach((key) => {
+            //modifico la propiedad del grupo que se encuentra en el index de más arriba
+            state.groups.at(index)[key] = response.data[key]
+          })
+        })
+
+        return true
+      } catch(error) {
+        return false
+      }
     }
   }
 })

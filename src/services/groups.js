@@ -36,6 +36,16 @@ async function celebrateAssignments(groupId) {
   return await http.get(`/grupos/${groupId}/integrantes/celebrar-asignacion`)
 }
 
+async function resetGroup(groupId, reset_participants) {
+  let payload = {}
+
+  if(reset_participants){
+    payload.reiniciar_participantes = true
+  }
+
+  return await http.post(`/grupos/${groupId}/reiniciar-grupo`, payload)
+}
+
 export default {
   getMyGroups,
   createGroup,
@@ -45,5 +55,6 @@ export default {
   deleteParticipant,
   resendParticipantInvitation,
   modifyGroup,
-  celebrateAssignments
+  celebrateAssignments,
+  resetGroup
 }

@@ -145,6 +145,17 @@
     "modalYes": "Sí, realizar asignaciones",
     "modalNo": "Todavía no"
   },
+  "resetGroup": {
+    "resetGroupBtn": "Reiniciar grupo",
+    "alertSuccess": "Grupo reiniciado correctamente",
+    "modalTitle": "Reiniciar grupo",
+    "modalBody1": "¿Estás seguro de querer reiniciar el grupo?",
+    "modalBody2": "Si hay asignaciones realizadas se descartarán",
+    "modalBody3": "¿Quieres continuar?",
+    "modalCheckbox": "Eliminar también a los participantes",
+    "modalYes": "Sí, reiniciar grupo",
+    "modalNo": "Todavía no"
+  },
   "footerMenu": {
     "myGroupsBtn": "Mis grupos",
     "accountBtn": "Mi cuenta"
