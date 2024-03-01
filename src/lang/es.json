@@ -77,7 +77,8 @@
     "inviteMassiveParticipantsModalTitle": "Invitar participantes",
     "groupLinkCopied": "El enlace para apuntarse al grupo se ha copiado al portapapeles",
     "participantInvited": "Participante invitado correctamente",
-    "massiveInvitationDone": "Invitaciones enviadas correctamente"
+    "massiveInvitationDone": "Invitaciones enviadas correctamente",
+    "stillNoParticipants": "Todavía no hay participantes en el grupo"
   },
 
   "inviteParticipant": {

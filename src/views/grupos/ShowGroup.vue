@@ -34,6 +34,7 @@
       </div>
     </block-section>
 
+    <!--Block to show the assigned participant when the admin lauches the assignments-->
     <block-section v-if="viewingGroup.integrantes_asignados" class="space-y-4">
       <div class="flex flex-col items-center justify-center">
         <p class="text-lg text-gray-300">Tu amigo invisible es</p>
@@ -41,6 +42,8 @@
       </div>
       <p class="text-red-300 text-center text-xs">(Ten en cuenta que puedes reutilizar el grupo para el proximo evento. Simplemente reinicialo desde los ajustes. Los integrantes se conservarán)</p>
     </block-section>
+
+    <!-- Block to show the buttons to add participants, invite by email, copy the group link and celebrate the assignments -->
     <div v-if="checkIfUserIsAdminOfGroup(viewingGroup.id) && !viewingGroup.integrantes_asignados" class="flex flex-row space-x-4">
       <add-participant />
       <massive-invite />
@@ -48,6 +51,8 @@
       <span class="flex-grow"></span>
       <CelebrateAssignments />
     </div>
+
+    <!-- Block to show the list of participants -->
     <block-section v-if="checkIfUserIsAdminOfGroup(viewingGroup.id) || !viewingGroup.integrantes_asignados">
       <participant-list-simplified />
     </block-section>

@@ -5,6 +5,12 @@
         <logo-icon-participant :participant="participant" />
       </li>
     </ul>
+
+    <div v-if="!participantsList" class="flex flex-col justify-center items-center space-y-3">
+      <p class="font-semibold text-2xl text-center">
+        {{ $t("showGroup.stillNoParticipants") }}
+      </p>
+    </div>
     <ul class="flex flex-col space-y-3">
       <li v-for="participant in participantsList" v-bind:key="participant.id">
         <div class="flex flex-row">
