@@ -33,6 +33,18 @@ export const useUserStore = defineStore('user', {
       }
     },
 
+    async actionLoginWithGoogle(payload) {
+      try {
+        const response = await API.users.loginUserWithGoogle(payload)
+
+        useUserStore().$patch({user: response.data})
+
+        return true
+      }catch(error) {
+        return false
+      }
+    },
+
     async actionRecoverAccount(account) {
       try {
         await API.users.accountRecover(account)

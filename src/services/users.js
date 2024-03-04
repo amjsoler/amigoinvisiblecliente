@@ -12,6 +12,10 @@ async function loginUser(theUser) {
   return await http.post('iniciar-sesion', theUser)
 }
 
+async function loginUserWithGoogle(payload) {
+  return await http.post('google-login', payload)
+}
+
 async function accountRecover(account) {
   return await http.post("recuperar-cuenta", account)
 }
@@ -40,5 +44,6 @@ export default {
   sendComment,
   deleteAccount,
   changePassword,
-  changeAccountSettings
+  changeAccountSettings,
+  loginUserWithGoogle
 }

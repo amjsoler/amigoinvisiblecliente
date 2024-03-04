@@ -7,6 +7,7 @@ import { i18n } from '@/lang/index.js'
 import App from './App.vue'
 import router from './router'
 import initSubscribers from '@/stores/initSubscribers.js'
+import vue3GoogleLogin from 'vue3-google-login'
 
 const app = createApp(App)
 
@@ -16,5 +17,9 @@ app.use(i18n)
 
 //// SUBSCRIBERS PINIA para guardar auto en local storage ////
 initSubscribers()
+
+app.use(vue3GoogleLogin, {
+  clientId: '437519312708-98o5rtlfu06sbioor1b38mh4vftbqdag.apps.googleusercontent.com'
+})
 
 app.mount('#app')

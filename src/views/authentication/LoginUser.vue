@@ -21,6 +21,10 @@
           {{$t("LoginUser.form.btnsubmit")}}
         </button-submit>
 
+        <div class="flex flex-row items-center justify-center">
+          <GoogleLogin :callback="googleSignInCallback" />
+        </div>
+
         <p class="text-sm font-light dark:text-gray-300 text-center">
           {{ $t("LoginUser.form.noaccount") }}
           <link-standard :destination="{name: 'RegisterUser'}">
@@ -51,10 +55,11 @@ import ContainerWithBrandHead from '@/components/containers/ContainerWithBrandHe
 import VariableInput from '@/components/forms/inputs/VariableInput.vue'
 import router from '@/router/index.js'
 import { removeIdFromProcessing } from '@/helpers/Helpers.js'
+import { GoogleLogin } from 'vue3-google-login'
 
 export default {
   name: 'LoginUser',
-  components: { VariableInput, ContainerWithBrandHead, DivVAlign, LinkStandard, ButtonSubmit, FormGroup, SmallError, SpanLabel },
+  components: { GoogleLogin, VariableInput, ContainerWithBrandHead, DivVAlign, LinkStandard, ButtonSubmit, FormGroup, SmallError, SpanLabel },
 
   data() {
     return {
@@ -66,13 +71,21 @@ export default {
   },
 
   methods: {
-    async login(){
+    async login() {
       const result = await useUserStore().actionLogin(this.loginUser)
 
-      removeIdFromProcessing("login-user-submit")
+      removeIdFromProcessing('login-user-submit')
 
-      if(result){
-        router.push({name: "MyGroups"})
+      if (result) {
+        router.push({ name: 'MyGroups' })
+      }
+    },
+
+    async googleSignInCallback(response) {
+      const result = await useUserStore().actionLoginWithGoogle({ credential: response.credential})
+
+      if(result) {
+        router.push({ name: 'MyGroups' })
       }
     }
   }
