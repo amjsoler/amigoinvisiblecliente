@@ -1,7 +1,7 @@
 <template>
   <div-v-align>
     <container-with-brand-head>
-      <h1 class="text-lg text-center font-bold dark:text-white">
+      <h1 class="text-2xl text-center font-semibold text-gray-800 dark:text-white">
         {{$t("RegisterUser.title")}}
       </h1>
       <form class="space-y-6">

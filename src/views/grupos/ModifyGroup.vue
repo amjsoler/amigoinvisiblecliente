@@ -8,74 +8,58 @@
     <span>{{ $t("modifyGroup.modifyGroupBtn")}}</span>
   </a>
 
-  <teleport to="body">
-    <div id="modify-group-modal"
-         tabindex="-1"
-         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center
-       items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-      <div class="relative p-4 w-full max-w-md max-h-full">
-        <div class="relative bg-white rounded-lg shadow dark:bg-container-background">
-          <button type="button"
-                  class="close-btn absolute top-3 end-2.5 text-gray-400 bg-transparent rounded-lg
-                text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                  data-modal-hide="modify-group-modal"
-          >
-            <close-icon />
-          </button>
-          <form class="space-y-6">
-            <form-group>
-              <span-label>{{ $t("modifyGroup.nombreLabel")}}</span-label>
-              <variable-input input-type="text" v-model="modifyGroup.nombre" />
-              <small-error field-name="nombre" />
-            </form-group>
-            <form-group>
-              <span-label>{{ $t("modifyGroup.descripcionLabel")}}</span-label>
-              <variable-input input-type="text" v-model="modifyGroup.descripcion" />
-              <small-error field-name="descripcion" />
-            </form-group>
-            <div class="flex flex-row gap-4">
-              <form-group>
-                <span-label>{{ $t("modifyGroup.precioMinimoLabel")}}</span-label>
-                <variable-input input-type="number" v-model="modifyGroup.precio_minimo" />
-                <small-error field-name="precio_minimo" />
-              </form-group>
-              <form-group>
-                <span-label>{{ $t("modifyGroup.precioMaximoLabel")}}</span-label>
-                <variable-input input-type="number" v-model="modifyGroup.precio_maximo" />
-                <small-error field-name="precio_maximos" />
-              </form-group>
-            </div>
-            <form-group>
-              <span-label>{{ $t("modifyGroup.tematicaRegalosLabel")}}</span-label>
-              <variable-input input-type="text" v-model="modifyGroup.tematica_regalos" />
-              <small-error field-name="tematica_regalos" />
-            </form-group>
-            <div>
-              <div class="flex flex-row items-center space-x-2">
-                <label for="autoasignacion-input">
-                  <span-label>{{ $t("modifyGroup.fechaAutoasignacionLabel")}}</span-label>
-                </label>
-                <info-circle class="z-10 w-6 h-6" data-tooltip-target="tooltip-click" data-tooltip-trigger="click" />
-                <div id="tooltip-click" role="tooltip" class="absolute z-20 invisible inline-block px-4
+  <full-screen-modal  modal-id="modify-group-modal">
+    <form class="space-y-6">
+      <form-group>
+        <span-label>{{ $t("modifyGroup.nombreLabel")}}</span-label>
+        <variable-input input-type="text" v-model="modifyGroup.nombre" />
+        <small-error field-name="nombre" />
+      </form-group>
+      <form-group>
+        <span-label>{{ $t("modifyGroup.descripcionLabel")}}</span-label>
+        <variable-input input-type="text" v-model="modifyGroup.descripcion" />
+        <small-error field-name="descripcion" />
+      </form-group>
+      <div class="flex flex-row gap-4">
+        <form-group>
+          <span-label>{{ $t("modifyGroup.precioMinimoLabel")}}</span-label>
+          <variable-input input-type="number" v-model="modifyGroup.precio_minimo" />
+          <small-error field-name="precio_minimo" />
+        </form-group>
+        <form-group>
+          <span-label>{{ $t("modifyGroup.precioMaximoLabel")}}</span-label>
+          <variable-input input-type="number" v-model="modifyGroup.precio_maximo" />
+          <small-error field-name="precio_maximos" />
+        </form-group>
+      </div>
+      <form-group>
+        <span-label>{{ $t("modifyGroup.tematicaRegalosLabel")}}</span-label>
+        <variable-input input-type="text" v-model="modifyGroup.tematica_regalos" />
+        <small-error field-name="tematica_regalos" />
+      </form-group>
+      <div>
+        <div class="flex flex-row items-center space-x-2">
+          <label for="autoasignacion-input">
+            <span-label>{{ $t("modifyGroup.fechaAutoasignacionLabel")}}</span-label>
+          </label>
+          <info-circle class="z-10 w-6 h-6" data-tooltip-target="tooltip-click" data-tooltip-trigger="click" />
+          <div id="tooltip-click" role="tooltip" class="absolute z-20 invisible inline-block px-4
           py-2 text-sm font-medium text-white rounded-lg shadow-sm opacity-0
           tooltip dark:bg-input-background">
-                  {{ $t("createGroup.fechaAutoasignacionTooltip") }}
-                  <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-              </div>
-              <variable-input id="autoasignacion-input" input-type="datetime-local" v-model="modifyGroup.fecha_autoasignacion" />
-              <small-error field-name="fecha_autoasignacion" />
-            </div>
-            <form-group>
-              <button-submit processing-id="modify-group-submit" @button-submit="modifyGroupFn">
-                {{ $t("modifyGroup.modifyGroupBtn") }}
-              </button-submit>
-            </form-group>
-          </form>
+            {{ $t("createGroup.fechaAutoasignacionTooltip") }}
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
         </div>
+        <variable-input id="autoasignacion-input" input-type="datetime-local" v-model="modifyGroup.fecha_autoasignacion" />
+        <small-error field-name="fecha_autoasignacion" />
       </div>
-    </div>
-  </teleport>
+      <form-group>
+        <button-submit processing-id="modify-group-submit" @button-submit="modifyGroupFn">
+          {{ $t("modifyGroup.modifyGroupBtn") }}
+        </button-submit>
+      </form-group>
+    </form>
+  </full-screen-modal>
 </template>
 
 <script>
@@ -88,12 +72,12 @@ import SmallError from '@/components/forms/SmallError.vue'
 import InfoCircle from '@/components/icons/InfoCircle.vue'
 import ButtonSubmit from '@/components/forms/ButtonSubmit.vue'
 import EditIcon from '@/components/icons/EditIcon.vue'
-import CloseIcon from '@/components/icons/CloseIcon.vue'
 import { useGeneralStore } from '@/stores/general.js'
+import FullScreenModal from '@/components/containers/FullScreenModal.vue'
 
 export default {
   name: "ModifyGroup",
-  components: { CloseIcon, EditIcon, ButtonSubmit, InfoCircle, SmallError, VariableInput, SpanLabel, FormGroup },
+  components: { FullScreenModal, EditIcon, ButtonSubmit, InfoCircle, SmallError, VariableInput, SpanLabel, FormGroup },
 
   inject: ["groupId"],
 
@@ -112,7 +96,7 @@ export default {
       removeIdFromProcessing("modify-group-submit")
 
       if(response) {
-        document.querySelector("#modify-group-modal .close-btn").click()
+        document.querySelector("#modify-group-modal .closebtn").click()
 
         useGeneralStore().actionShowAlert(this.$t("modifyGroup.modifyAlert"), "success")
 

@@ -1,7 +1,7 @@
 <template>
   <div-v-align>
-    <container-with-brand-head>
-      <h1 class="text-lg text-center font-bold dark:text-white mb-2">
+    <container-with-brand-head maxwmd="true">
+      <h1 class="text-2xl text-center font-semibold dark:text-white mb-2">
         {{$t("LoginUser.title")}}
       </h1>
       <form class="space-y-6">

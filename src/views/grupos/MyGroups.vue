@@ -1,27 +1,26 @@
 <template>
   <view-container>
     <block-section>
-      <a class="flex flex-row items-center justify-center" href="#" @click.prevent="createFormVisibility = !createFormVisibility">
-        <span>{{ $t("myGroups.createGroupBtn") }}</span><span><caret-down-filled /></span>
-      </a>
+      <p class="flex flex-row items-center justify-center w-full" @click.stop="createFormVisibility = !createFormVisibility">
+        <span>{{ $t("myGroups.createGroupBtn") }}</span><span><caret-down-filled class="size-4 ml-1" /></span>
+      </p>
       <create-group @group-created="createFormVisibility = !createFormVisibility" v-if="createFormVisibility" />
     </block-section>
 
     <block-section>
-      <ul v-if="groups && groups.length !== 0">
+      <ul v-if="groups && groups.length !== 0" class="space-y-4">
         <li @click="router().push({name: 'ShowGroup', params: {id: group.id}})"
-            v-for="group in groups" v-bind:key="group.id">
+            v-for="(group, index) in groups" v-bind:key="group.id">
           <article>
             <header>
-              {{ group.nombre }}
+              <h3 class="text-xl">{{ group.nombre }}</h3>
             </header>
-            <body>
-
-            </body>
             <footer v-if="group && group.integrantes_del_grupo && group.integrantes_del_grupo.length">
+              <!-- TODO Mostrar aquí también el estado del grupo (en reparto, asignaciones realizadas, etc) -->
               {{ group.integrantes_del_grupo.length }}
             </footer>
           </article>
+          <div v-if="index !== groups.length - 1" class="border-b-2 border-gray-600 w-full mt-4"></div>
         </li>
       </ul>
       <div v-else class="text-center space-y-2">

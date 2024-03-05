@@ -1,7 +1,8 @@
 <template>
-  <div class="rounded-lg py-2 px-4 w-full"
-       :class="{'dark:bg-container-background': !blur,
-                 'backdrop-blur': blur}">
+  <div class="rounded-lg py-4 w-full"
+       :class="{'dark:bg-gray-800': !blur,
+                 'backdrop-blur': blur,
+                 'px-8': !nopx}">
     <slot />
   </div>
 </template>
@@ -13,6 +14,10 @@ export default {
     blur: {
       default: false
     },
+
+    nopx: {
+      default: false
+    }
   }
 }
 </script>

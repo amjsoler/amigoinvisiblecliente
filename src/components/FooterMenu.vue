@@ -1,5 +1,5 @@
 <template>
-  <footer class="fixed bottom-0 w-full h-16 flex flex-row justify-around bg-container-background
+  <footer id="footer-menu" class="z-10 fixed bottom-0 w-full h-16 flex flex-row justify-around bg-container-background
                 border-t-2 border-input-background">
     <a href="#"
        class="flex flex-col items-center justify-center"
@@ -36,9 +36,3 @@ export default {
 
 }
 </script>
-
-<style>
-  #routerview-cotainer {
-    padding-bottom: 100px;
-  }
-</style>

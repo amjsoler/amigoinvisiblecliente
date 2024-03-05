@@ -8,6 +8,9 @@ async function accountVerify() {
   return await http.get("verificar-cuenta")
 }
 
+async function checkAccountVerification() {
+  return await http.get("comprobar-verificacion-cuenta")
+}
 async function loginUser(theUser) {
   return await http.post('iniciar-sesion', theUser)
 }
@@ -39,6 +42,7 @@ async function changeAccountSettings(changeAccountSettingsPayload) {
 export default {
   registerUser,
   accountVerify,
+  checkAccountVerification,
   loginUser,
   accountRecover,
   sendComment,

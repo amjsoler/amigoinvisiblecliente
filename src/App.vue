@@ -1,10 +1,10 @@
 <template>
+  <footer-menu v-if="requiresFooterMenu"/>
   <router-view v-slot="{ Component }" id="routerview-cotainer">
     <Transition name="view-transition">
       <component :is="Component" />
     </Transition>
   </router-view>
-  <footer-menu v-if="requiresFooterMenu"/>
   <system-alert />
 </template>
 

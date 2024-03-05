@@ -1,5 +1,5 @@
 <template>
-  <block-section>
+  <block-section nopx="true">
     <form class="space-y-6">
       <form-group>
         <span-label>{{ $t("createGroup.nombreLabel")}}</span-label>

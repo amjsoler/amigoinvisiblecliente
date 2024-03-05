@@ -15,7 +15,7 @@
       <li v-for="participant in participantsList" v-bind:key="participant.id">
         <div class="flex flex-row">
           <p class="flex-grow">{{participant.nombre}} ({{ participant.correo}})</p>
-          <div v-if="checkIfUserIsAdminOfGroup(groupId)" class="flex flex-row space-x-3">
+          <div v-if="checkIfUserIsAdminOfGroup(parseInt(groupId))" class="flex flex-row space-x-3">
             <mail-forward v-if="!participant.confirmado" class="text-primary-300" @click="resendParticipantInvitation(participant)" />
             <trash-x-icon class="text-red-300" @click="removeParticipant(participant)"/>
           </div>
@@ -42,6 +42,10 @@ export default {
     participantsList() {
       return useGroupsStore().actionGetGroup(this.groupId).integrantes_del_grupo
     }
+  },
+
+  beforeMount() {
+    console.log("asdf")
   },
   methods: {
     checkIfUserIsAdminOfGroup,

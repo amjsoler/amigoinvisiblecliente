@@ -1,9 +1,9 @@
 <template>
   <div-v-align>
-    <container-with-brand-head>
+    <container-with-brand-head maxwmd="true">
       <section v-if="!emailSent"
-               class="flex flex-col items-center space-y-6 pt-2">
-        <h1 class="text-lg text-center font-bold dark:text-white">
+               class="flex flex-col items-center space-y-6">
+        <h1 class="text-2xl text-center font-semibold text-gray-800 dark:text-white">
           {{ $t("accountRecovery.title") }}
         </h1>
         <p class="text-center text-sm dark:text-gray-200">
@@ -21,12 +21,12 @@
           </button-submit>
         </form>
       </section>
-      <section v-else class="flex flex-col items-center text-green-600">
+      <section v-else class="flex flex-col items-center space-y-2 text-green-600">
         <icon-check width="75px" height="75px" />
-        <p class="text-center text-gray-50">
+        <p class="text-center font-semibold text-lg text-white">
           {{ $t("accountRecovery.emailSent") }}
         </p>
-        <p class="text-center text-gray-300">
+        <p class="text-center text-gray-200">
           {{ $t("accountRecovery.emailSent2") }}
         </p>
       </section>

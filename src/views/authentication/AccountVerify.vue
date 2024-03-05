@@ -1,6 +1,6 @@
 <template>
   <div-v-align>
-    <container-with-brand-head blur="true">
+    <container-with-brand-head blur="true" maxwmd="true">
       <section v-if="!emailSent"
                class="flex flex-col items-center space-y-2 py-2">
         <p class="text-center text-pretty text-lg">
@@ -31,6 +31,8 @@ import DivVAlign from '@/components/containers/DivVAlign.vue'
 import ContainerWithBrandHead from '@/components/containers/ContainerWithBrandHead.vue'
 import { API } from '@/services/index.js'
 import { removeIdFromProcessing } from '@/helpers/Helpers.js'
+import { useUserStore } from '@/stores/user.js'
+import router from '@/router/index.js'
 
 export default {
   name: "AccountVerify",
@@ -38,13 +40,32 @@ export default {
 
   data() {
     return {
-      emailSent:false
+      emailSent:false,
+      timer: null
     }
   },
 
+  mounted() {
+    this.timer = setInterval(() => {
+      this.checkVerifiedUser()
+    }, 3000)
+  },
+
+  unmounted() {
+    clearInterval(this.timer)
+  },
+
   methods: {
+    async checkVerifiedUser() {
+      const response = await useUserStore().actionCheckAccountVerification()
+
+      if(response){
+        this.$router.push({name: 'MyGroups'})
+      }
+    },
+
     async resendEmail() {
-      const response = await API.users.accountVerify()
+      const response = await useUserStore().actionAccountVerify()
 
       removeIdFromProcessing("account-verify-submit")
 

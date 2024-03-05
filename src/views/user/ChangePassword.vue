@@ -19,7 +19,6 @@
     </form-group>
 
     <form-group>
-      <span-label>{{ $t("changePassword.btnSubmit")}}</span-label>
       <button-submit processing-id="change-password-submit" @button-submit="changePassword">
         {{ $t("changePassword.btnSubmit") }}
       </button-submit>

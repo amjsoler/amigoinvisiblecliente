@@ -65,6 +65,20 @@ export const useUserStore = defineStore('user', {
       }
     },
 
+    async actionCheckAccountVerification() {
+      try {
+        const response = await API.users.checkAccountVerification()
+
+        if(response.data.check){
+          return true
+        }else{
+          return false
+        }
+      }catch(error){
+        return false
+      }
+    },
+
     async actionSendComment(comment) {
       try {
         await API.users.sendComment(comment)

@@ -24,11 +24,11 @@
         </div>
       </div>
 
-      <div v-if="viewingGroup && viewingGroup.descripcion">
-        <a class="flex flex-row items-center justify-center" href="#" @click.prevent="descVisible = !descVisible">
-          <span>{{ $t("showGroup.showDesc") }}</span><span><caret-down-filled /></span>
+      <div v-if="viewingGroup && viewingGroup.descripcion" class="space-y-4">
+        <a class="flex flex-row items-center justify-center text-sm" href="#" @click.prevent="descVisible = !descVisible">
+          <span>{{ $t("showGroup.showDesc") }}</span><span><caret-down-filled class="size-3" /></span>
         </a>
-        <p class="bg-input-background" v-show="descVisible">
+        <p class="" v-show="descVisible">
           {{ viewingGroup.descripcion }}
         </p>
       </div>

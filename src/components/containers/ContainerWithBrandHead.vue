@@ -1,5 +1,6 @@
 <template>
-  <div class="flex-grow flex flex-col items-center space-y-6 px-4">
+  <div class="mx-auto flex-grow flex flex-col items-center space-y-6 px-4"
+      :class="{'max-w-md': maxwmd}">
     <logo-and-app-name-horizontal v-if="includeBrand === true" />
     <block-section :blur="blur">
       <slot />
@@ -18,6 +19,9 @@ export default {
     },
     includeBrand: {
       default: true
+    },
+    maxwmd: {
+      default: false
     }
   },
 
