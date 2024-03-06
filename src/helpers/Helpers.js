@@ -11,19 +11,19 @@ export const getDateFromString = (datetime) => {
 export const getHourFromString = (datetime) => {
   const date = new Date(datetime)
 
-  return date.getHours()+":"+date.getMinutes()
+  return date.getHours()+":"+date.getMinutes().toString().padStart(2,'0')  + "H"
 }
 
 export const getDateAndHourFromString = (datetime) => {
   const date = new Date(datetime)
 
-  return date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear() + " " + date.getHours()+":"+date.getMinutes() + "H"
+  return date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear() + " " + date.getHours()+":"+date.getMinutes().toString().padStart(2,'0') + "H"
 }
 
 export const getDateAndHourNow = () => {
   const date = new Date()
 
-  return date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear() + " " + date.getHours()+":"+date.getMinutes() + "H"
+  return date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear() + " " + date.getHours()+":"+date.getMinutes().toString().padStart(2,'0') + "H"
 }
 
 export const getMonthLiteralAndTwoNumberYear = (datetime) => {
