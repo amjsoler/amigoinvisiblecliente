@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { API } from '@/services/index.js'
 import { useGeneralStore } from '@/stores/general.js'
 import { i18n } from '@/lang/index.js'
+import { useUserStore } from '@/stores/user.js'
 
 export const useGroupsStore = defineStore("groups", {
   state: () => {
@@ -153,6 +154,40 @@ console.log(response)
 
         return true
       } catch(error) {
+        return false
+      }
+    },
+
+    async actionAddException(groupId, participantId) {
+      try {
+        const response = await API.groups.addException(groupId, participantId)
+
+        //Busco el índice del usuario actual en la lista de integrantes del grupo
+        const userIndex = this.actionGetGroup(groupId).integrantes_del_grupo.findIndex((element) => element.usuario === useUserStore().user.id)
+
+        //Añado la excepción a dicho usuario
+        this.actionGetGroup(groupId).integrantes_del_grupo.at(userIndex).exclusiones_del_integrante.push(response.data)
+
+        return true
+      }
+      catch(error) {
+        return false
+      }
+    },
+
+    async actionRemoveException(groupId, exceptionId) {
+      try {
+        await API.groups.removeException(groupId, exceptionId)
+
+        //Busco el índice del usuario actual en la lista de integrantes del grupo
+        const userIndex = this.actionGetGroup(groupId).integrantes_del_grupo.findIndex((element) => element.usuario === useUserStore().user.id)
+
+        //Hago un splice de la excepción que quiero eliminar
+        this.actionGetGroup(groupId).integrantes_del_grupo.at(userIndex).exclusiones_del_integrante.splice(this.actionGetGroup(groupId).integrantes_del_grupo.at(userIndex).exclusiones_del_integrante.findIndex((element) => element.id === exceptionId), 1)
+
+        return true
+      }
+      catch(error) {
         return false
       }
     }

@@ -46,6 +46,14 @@ async function resetGroup(groupId, reset_participants) {
   return await http.post(`/grupos/${groupId}/reiniciar-grupo`, payload)
 }
 
+async function addException(groupId, participantId) {
+  return await http.post(`/grupos/${groupId}/integrantes/crear-exclusion`, {usuario_excluido: participantId})
+}
+
+async function removeException(groupId, exceptionId) {
+  return await http.delete(`/grupos/${groupId}/integrantes/quitar-exclusion/${exceptionId}`)
+}
+
 export default {
   getMyGroups,
   createGroup,
@@ -56,5 +64,7 @@ export default {
   resendParticipantInvitation,
   modifyGroup,
   celebrateAssignments,
-  resetGroup
+  resetGroup,
+  addException,
+  removeException
 }

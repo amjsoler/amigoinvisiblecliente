@@ -52,6 +52,11 @@
       <CelebrateAssignments />
     </div>
 
+    <!-- Block to show the excepcions -->
+    <div class="flex flex-row justify-center">
+      <manage-exceptions />
+    </div>
+
     <!-- Block to show the list of participants -->
     <block-section v-if="checkIfUserIsAdminOfGroup(viewingGroup.id) || !viewingGroup.integrantes_asignados">
       <participant-list-simplified />
@@ -76,10 +81,11 @@ import LinkIcon from '@/components/icons/LinkIcon.vue'
 import AddParticipant from '@/components/groups/AddParticipant.vue'
 import MassiveInvite from '@/components/groups/MassiveInvite.vue'
 import CelebrateAssignments from '@/components/groups/CelebrateAssignments.vue'
+import ManageExceptions from '@/components/groups/ManageExceptions.vue'
 
 export default {
   name: "ShowGroup",
-  components: { CelebrateAssignments, MassiveInvite, AddParticipant, LinkIcon, CaretDownFilled, ViewContainer, GroupSettings, ParticipantListSimplified, GiftIcon, PigMoney, BlockSection },
+  components: { ManageExceptions, CelebrateAssignments, MassiveInvite, AddParticipant, LinkIcon, CaretDownFilled, ViewContainer, GroupSettings, ParticipantListSimplified, GiftIcon, PigMoney, BlockSection },
 
   data() {
     return {

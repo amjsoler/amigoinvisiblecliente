@@ -158,6 +158,12 @@
     "modalYes": "Sí, reiniciar grupo",
     "modalNo": "Todavía no"
   },
+
+  "manageExceptions": {
+    "titleBtn": "Excepciones",
+    "modalTitle": "Gestionar excepciones"
+  },
+
   "footerMenu": {
     "myGroupsBtn": "Mis grupos",
     "accountBtn": "Mi cuenta"
