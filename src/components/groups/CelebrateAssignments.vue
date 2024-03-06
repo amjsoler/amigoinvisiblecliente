@@ -1,10 +1,7 @@
 <template>
-  <a href="#" class="flex flex-row items-center justify-center"
-     data-modal-toggle="celebrate-assignments-modal"
-     data-modal-target="celebrate-assignments-modal"
-  >
-    <users-group class="size-10 border-2 rounded-lg bg-" />
-  </a>
+    <users-group class="size-10 border-2 rounded-lg"
+                 data-modal-toggle="celebrate-assignments-modal"
+                 data-modal-target="celebrate-assignments-modal"/>
 
   <full-screen-modal modal-id="celebrate-assignments-modal" :modal-title="$t('celebrateAssignments.modalTitle')"
                     :btn-yes="$t('celebrateAssignments.modalYes')"

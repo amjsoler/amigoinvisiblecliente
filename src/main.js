@@ -19,7 +19,7 @@ app.use(i18n)
 initSubscribers()
 
 app.use(vue3GoogleLogin, {
-  clientId: '437519312708-98o5rtlfu06sbioor1b38mh4vftbqdag.apps.googleusercontent.com'
+  clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,
 })
 
 app.mount('#app')

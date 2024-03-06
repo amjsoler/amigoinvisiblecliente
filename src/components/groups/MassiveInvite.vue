@@ -6,7 +6,7 @@
 
   <full-screen-modal modal-id="massive-invite-participants-modal"
                      :modal-title="$t('showGroup.inviteMassiveParticipantsModalTitle')">
-    <div class="p-4 md:p-5">
+    <div class="">
       <massive-invitation :group-id="groupId"
                           @massive-invitation-done="massiveInvitationDoneCallback"/>
     </div>

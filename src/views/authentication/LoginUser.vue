@@ -21,22 +21,26 @@
           {{$t("LoginUser.form.btnsubmit")}}
         </button-submit>
 
+        <hr>
+
         <div class="flex flex-row items-center justify-center">
           <GoogleLogin :callback="googleSignInCallback" />
         </div>
 
-        <p class="text-sm font-light dark:text-gray-300 text-center">
-          {{ $t("LoginUser.form.noaccount") }}
-          <link-standard :destination="{name: 'RegisterUser'}">
-            {{ $t("LoginUser.form.registerlink") }}
-          </link-standard>
-        </p>
+        <section class="space-y-2">
+          <p class="text-sm font-light dark:text-gray-300 text-center">
+            {{ $t("LoginUser.form.noaccount") }}
+            <link-standard :destination="{name: 'RegisterUser'}">
+              {{ $t("LoginUser.form.registerlink") }}
+            </link-standard>
+          </p>
 
-        <p class="text-sm font-light text-center">
-          <link-standard :destination="{name: 'AccountRecovery'}">
-            {{$t("LoginUser.form.passrememberlink")}}
-          </link-standard>
-        </p>
+          <p class="text-sm font-light text-center">
+            <link-standard :destination="{name: 'AccountRecovery'}">
+              {{$t("LoginUser.form.passrememberlink")}}
+            </link-standard>
+          </p>
+        </section>
       </form>
     </container-with-brand-head>
   </div-v-align>
