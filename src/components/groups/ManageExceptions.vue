@@ -13,8 +13,18 @@
         'labeled-gray': isExcludedTheGivenParticipantId(participant.id),
         'unlabeled-gray': !isExcludedTheGivenParticipantId(participant.id)
       }" v-for="participant in group.integrantes_del_grupo" :key="participant.id">
-        <p v-if="participant.usuario !== actualUserId && !isExcludedTheGivenParticipantId(participant.id)" @click.prevent="addException(participant.id)">{{ participant.nombre }}</p>
-        <p v-else-if="participant.usuario !== actualUserId && isExcludedTheGivenParticipantId(participant.id)" @click.prevent="removeException(participant.id)">{{ participant.nombre }}</p>
+        <p v-if="participant.confirmado &&
+                  participant.usuario !== actualUserId &&
+                  !isExcludedTheGivenParticipantId(participant.id)" @click.prevent="addException(participant.id)"
+        >
+          {{ participant.nombre }}
+        </p>
+        <p v-else-if="participant.confirmado &&
+                      participant.usuario !== actualUserId &&
+                      isExcludedTheGivenParticipantId(participant.id)" @click.prevent="removeException(participant.id)"
+        >
+          {{ participant.nombre }}
+        </p>
       </li>
     </ul>
   </full-screen-modal>
