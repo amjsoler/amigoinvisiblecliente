@@ -67,7 +67,7 @@ const instance = axios
       else if(error.response.status === 465){
         console.log("main.js: Response error captured: 465. No es posible añadir esta excepción");
 
-        useGeneralStore().actionShowAlert("No es posible añadir esta excepción. De hacerlo no sería posible crear las asignaciones en el grupo. Si quieres añadirla, prueba a quitar alguna de las otras excepciones o espera que entre más gente al grupo", "danger")
+        useGeneralStore().actionShowAlert(i18n.global.t("manageExceptions.errorTooMuchExceptions"), "danger")
       }
       else if(error.response.status === 404){
         console.log("main.js: Response error captured: 404. Recurso no encontrado. Muestro la vista 404");

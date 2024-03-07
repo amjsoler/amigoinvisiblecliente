@@ -161,7 +161,8 @@
 
   "manageExceptions": {
     "titleBtn": "Excepciones",
-    "modalTitle": "Gestionar excepciones"
+    "modalTitle": "Gestionar excepciones",
+    "errorTooMuchExceptions": "No se puede añadir esta excepción. Espera que entre más gente al grupo o quita alguna excepción"
   },
 
   "footerMenu": {

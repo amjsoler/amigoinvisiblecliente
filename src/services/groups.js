@@ -4,6 +4,10 @@ async function getMyGroups() {
   return await http.get("mis-grupos")
 }
 
+async function getGroup(groupId) {
+  return await http.get("grupos/" + groupId)
+}
+
 async function createGroup(newGroup) {
   return await http.post("grupos", newGroup)
 }
@@ -56,6 +60,7 @@ async function removeException(groupId, exceptionId) {
 
 export default {
   getMyGroups,
+  getGroup,
   createGroup,
   deleteGroup,
   inviteParticipant,
