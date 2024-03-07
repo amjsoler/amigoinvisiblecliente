@@ -82,6 +82,7 @@ import AddParticipant from '@/components/groups/AddParticipant.vue'
 import MassiveInvite from '@/components/groups/MassiveInvite.vue'
 import CelebrateAssignments from '@/components/groups/CelebrateAssignments.vue'
 import ManageExceptions from '@/components/groups/ManageExceptions.vue'
+import { API } from '@/services/index.js'
 
 export default {
   name: "ShowGroup",
@@ -105,6 +106,20 @@ export default {
     else{
       this.viewingGroup = response
     }
+  },
+
+  async mounted() {
+      const updatedGroup = await API.groups.getGroup(router.currentRoute.value.params.id)
+
+    const groupIdAux = router.currentRoute.value.params.id
+    const index = useGroupsStore().groups.findIndex((element) => element.id === groupIdAux)
+    useGroupsStore().$patch((state) => {
+      //recorro las propiedades del objeto que tengo en la respuesta
+      Object.keys(updatedGroup.data).forEach((key) => {
+        //modifico la propiedad del grupo que se encuentra en el index de más arriba
+        state.groups.at(index)[key] = updatedGroup.data[key]
+      })
+    })
   },
 
   provide() {
